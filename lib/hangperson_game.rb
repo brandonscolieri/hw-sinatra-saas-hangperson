@@ -31,9 +31,9 @@ class HangpersonGame
   end
 
 
-  def hasGuessed?
-    if isValidGuess?(@guess)
-      recentGuessSet = @guess.split("").to_set
+  def hasGuessed?(defaultWord = @guess)
+    if isValidGuess?(defaultWord)
+      recentGuessSet = defaultWord.split("").to_set
       collisions = @allGuesses & recentGuessSet
       if collisions.empty?
         return false
@@ -41,7 +41,7 @@ class HangpersonGame
         return true
       end
     else
-      return "Invalid Input"
+      return "Invalid input."
     end
   end
 
